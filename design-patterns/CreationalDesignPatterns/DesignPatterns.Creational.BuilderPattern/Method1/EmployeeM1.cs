@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.BuilderPattern.Method1;
+﻿namespace DesignPatterns.Creational.BuilderPattern.Method1;
 public class EmployeeM1 {
     public String FirstName { get; set; }
     public String LastName { get; set; }

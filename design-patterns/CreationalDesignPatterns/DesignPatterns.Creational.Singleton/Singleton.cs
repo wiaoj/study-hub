@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Singleton;
+﻿namespace DesignPatterns.Creational.Singleton;
 public sealed class Singleton : IPrintableName {
     private static readonly Singleton instance = new();
     private static Int32 instanceCount = 0;

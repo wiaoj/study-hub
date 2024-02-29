@@ -42,6 +42,6 @@ internal class Character {
     }
 
     public override String ToString() {
-        return this.GetValue().ToString();
+        return GetValue().ToString();
     }
 }

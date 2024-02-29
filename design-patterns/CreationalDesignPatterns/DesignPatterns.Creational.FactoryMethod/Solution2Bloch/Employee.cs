@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DesignPatterns.FactoryMethod.Solution2Bloch;
+namespace DesignPatterns.Creational.FactoryMethod.Solution2Bloch;
 public class Employee {
     public Int32 No { get; set; }
     public String Name { get; set; }

@@ -1,5 +1,5 @@
-﻿using DesignPatterns.Singleton;
-using System.Reflection;
+﻿using DesignPatterns.Creational.Singleton;
+
 
 //Client client = new();
 //List<Int64> threadeSafeLazy = [];
@@ -41,4 +41,4 @@ Type singletonType = typeof(ThreadSafeLazySingleton2);
 Object? singleton1 = Activator.CreateInstance(singletonType, true);
 Object? singleton2 = Activator.CreateInstance(singletonType, true);
 Console.WriteLine(singleton1.GetHashCode() == singleton2.GetHashCode()); //FALSE, because of reflection
-//use enumeration -> enum
+                                                                         //use enumeration -> enum

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod;
+﻿namespace DesignPatterns.Creational.FactoryMethod;
 public static class RandomExtensions {
 
     private static readonly String[] firstNames = [
@@ -43,11 +43,11 @@ public static class RandomExtensions {
     public static Int32 CreateEmployeeId(this Random random) {
         return random.Next(1, 100_000);
     }
-    public static String CreateEmployeeName(this Random random) { 
+    public static String CreateEmployeeName(this Random random) {
         return firstNames[random.Next(35)];
     }
 
-    public static String CreateEmployeeDepartment(this Random random) { 
+    public static String CreateEmployeeDepartment(this Random random) {
         return departments[random.Next(4)];
     }
 

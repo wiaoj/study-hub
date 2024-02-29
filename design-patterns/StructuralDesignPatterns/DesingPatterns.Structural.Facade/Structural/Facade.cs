@@ -1,33 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DesingPatterns.Structural.Facade.Structural;
+﻿namespace DesingPatterns.Structural.Facade.Structural;
 internal sealed class Facade {
-    private SubSystemOne one;
-    private SubSystemTwo two;
-    private SubSystemThree three;
-    private SubSystemFour four;
+    private readonly SubSystemOne one;
+    private readonly SubSystemTwo two;
+    private readonly SubSystemThree three;
+    private readonly SubSystemFour four;
 
     public Facade() {
-        one = new SubSystemOne();
-        two = new SubSystemTwo();
-        three = new SubSystemThree();
-        four = new SubSystemFour();
+        this.one = new SubSystemOne();
+        this.two = new SubSystemTwo();
+        this.three = new SubSystemThree();
+        this.four = new SubSystemFour();
     }
 
     public void MethodA() {
         Console.WriteLine("\nMethodA() ---- ");
-        one.MethodOne();
-        two.MethodTwo();
-        four.MethodFour();
+        this.one.MethodOne();
+        this.two.MethodTwo();
+        this.four.MethodFour();
     }
 
     public void MethodB() {
         Console.WriteLine("\nMethodB() ---- ");
-        two.MethodTwo();
-        three.MethodThree();
+        this.two.MethodTwo();
+        this.three.MethodThree();
     }
 }

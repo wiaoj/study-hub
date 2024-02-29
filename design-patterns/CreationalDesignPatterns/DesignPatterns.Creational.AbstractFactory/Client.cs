@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.AbstractFactory;
+﻿namespace DesignPatterns.Creational.AbstractFactory;
 public sealed class Client {
     public Client(IGUIFactory factory) {
         IComponent button = factory.CreateButton();

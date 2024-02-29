@@ -1,5 +1,4 @@
-﻿using DesignPatterns.Structural.Composite.BasicComposite;
-using DesignPatterns.Structural.Composite.RealTimeExample;
+﻿using DesignPatterns.Structural.Composite.RealTimeExample;
 using Directory = DesignPatterns.Structural.Composite.RealTimeExample.Directory;
 
 //Test.CreateTest();

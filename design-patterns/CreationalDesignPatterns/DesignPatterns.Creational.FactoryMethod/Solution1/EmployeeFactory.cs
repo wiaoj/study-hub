@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Solution1;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Solution1;
 
 public class EmployeeFactory : IFactory {
     public Employee Create() {

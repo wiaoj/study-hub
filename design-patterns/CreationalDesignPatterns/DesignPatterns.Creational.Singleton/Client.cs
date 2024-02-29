@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 
-namespace DesignPatterns.Singleton;
+namespace DesignPatterns.Creational.Singleton;
 public sealed class Client {
-    void PrintInstanceName(IPrintableName printableName) {
+    private void PrintInstanceName(IPrintableName printableName) {
         //Console.WriteLine(printableName.Name);
     }
 
@@ -23,7 +23,7 @@ public sealed class Client {
         While(count, () => {
             //SingletonTestMethods();
             //Thread thread = new(new ThreadStart(() => this.SingletonTests(false)));
-            Thread thread = new(this.SingletonTests);
+            Thread thread = new(SingletonTests);
             thread.Start();
 
             /*
@@ -46,7 +46,7 @@ public sealed class Client {
              */
         });
 
-        var action = () => {
+        Action action = () => {
             While(count, () => {
                 Thread thread = new(() => {
                     PrintInstanceName(ThreadSafeLazySingleton.Instance);
@@ -76,7 +76,7 @@ public sealed class Client {
         });
 
 
-        var action = () => {
+        Action action = () => {
             While(count, () => {
                 Thread thread = new(() => {
                     PrintInstanceName(ThreadSafeLazySingleton2.Instance);
@@ -93,7 +93,7 @@ public sealed class Client {
     }
 
     public Int64 DoubleCheckedLocking(Int32 count) {
-        var action = () => {
+        Action action = () => {
             While(count, () => {
                 Thread thread = new(() => {
                     PrintInstanceName(DoubleCheckedLockingSingleton.Instance);
@@ -104,17 +104,16 @@ public sealed class Client {
         return Stopwatch(action, nameof(DoubleCheckedLockingSingleton));
     }
 
-    void While(Int32 count, Action action) {
-        while(count-- > 0) {
+    private void While(Int32 count, Action action) {
+        while(count-- > 0)
             action.Invoke();
-        }
     }
 
-    Int64 Stopwatch(Action action, String methodName) {
+    private Int64 Stopwatch(Action action, String methodName) {
         return Stopwatch(action, methodName, false);
     }
 
-    Int64 Stopwatch(Action action, String methodName, Boolean writeToConsole) {
+    private Int64 Stopwatch(Action action, String methodName, Boolean writeToConsole) {
         Stopwatch stopwatch = new();
         stopwatch.Start();
         action.Invoke();

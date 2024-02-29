@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.BuilderPattern.Method1;
+﻿namespace DesignPatterns.Creational.BuilderPattern.Method1;
 public class EmployeeBuilderM1 {
     private EmployeeM1 employee { get; set; }
 

@@ -19,9 +19,9 @@ amazon.NotifyAll(); // hepsini notify eder
 
 Console.ReadLine();
 
-class Amazon { // subject
+internal class Amazon { // subject
     // subject bir şey olduğunda observer'larına haber verip, bilgilendiriyor
-    private Dictionary<IObserver, Product> observers = new();
+    private readonly Dictionary<IObserver, Product> observers = new();
 
     public void Register(IObserver observer, Product product) {
         this.observers.TryAdd(observer, product);
@@ -39,7 +39,7 @@ class Amazon { // subject
     }
 
     public void NotifyForProductName(String productName) {
-        foreach(var observer in this.observers) {
+        foreach(KeyValuePair<IObserver, Product> observer in this.observers) {
             if(observer.Value.Name == productName) {
                 observer.Key.Notify(observer.Value);
             }
@@ -47,11 +47,11 @@ class Amazon { // subject
     }
 }
 
-interface IObserver {
+internal interface IObserver {
     public void Notify(Product product);
 }
 
-class StockObserver : IObserver { // observer
+internal class StockObserver : IObserver { // observer
     public String FullName { get; set; }
 
     public StockObserver(String fullName) {
@@ -63,7 +63,7 @@ class StockObserver : IObserver { // observer
     }
 }
 
-class StockObserver2 : IObserver {
+internal class StockObserver2 : IObserver {
     public String FullName { get; set; }
 
     public StockObserver2(String fullName) {
@@ -75,7 +75,7 @@ class StockObserver2 : IObserver {
     }
 }
 
-class Product {
+internal class Product {
     public String Name { get; set; }
     public Decimal Price { get; set; }
 

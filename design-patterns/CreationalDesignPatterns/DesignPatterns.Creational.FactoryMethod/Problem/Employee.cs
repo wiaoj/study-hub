@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DesignPatterns.FactoryMethod.Problem;
+namespace DesignPatterns.Creational.FactoryMethod.Problem;
 public sealed class Employee {
     public Int32 No { get; set; }
     public String Name { get; set; }
@@ -47,12 +47,10 @@ public sealed class Employee {
             Manage();
             MakeAStrategicPlan();
         }
-        else if(this.Type.Equals("Manager")) {
+        else if(this.Type.Equals("Manager"))
             Manage();
-        }
-        else {
+        else
             Console.WriteLine("Employee is working!");
-        }
     }
 
     public Decimal CalculateSalary() {

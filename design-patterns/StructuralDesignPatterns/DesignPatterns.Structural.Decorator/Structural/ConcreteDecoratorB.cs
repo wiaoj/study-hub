@@ -6,7 +6,7 @@ public class ConcreteDecoratorB : Decorator {
         Console.WriteLine("ConcreteDecoratorB.Operation()");
     }
 
-    void AddedBehavior() {
+    private void AddedBehavior() {
         Console.WriteLine("Behavior added");
     }
 }

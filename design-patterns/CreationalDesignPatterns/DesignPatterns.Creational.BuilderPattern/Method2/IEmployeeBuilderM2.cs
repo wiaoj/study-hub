@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.BuilderPattern.Method2;
+﻿namespace DesignPatterns.Creational.BuilderPattern.Method2;
 public interface IEmployeeBuilderM2 {
     public EmployeeM2 BuildEmployee();
     public void SetEmail(String email);

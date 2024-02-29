@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Problem;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Problem;
 internal static class ProblemTest {
     public static void Run() {
         HR hr = new();

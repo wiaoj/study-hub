@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Solution1;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Solution1;
 public class PayrollOffice {
     public void PaySalary(Employee employee) {
         String name = employee.Name;

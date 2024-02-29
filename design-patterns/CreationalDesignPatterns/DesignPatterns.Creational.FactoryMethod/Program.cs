@@ -1,5 +1,5 @@
-﻿using DesignPatterns.FactoryMethod.Problem;
-using DesignPatterns.FactoryMethod.Solution1;
+﻿using DesignPatterns.Creational.FactoryMethod.Solution1;
+
 
 //ProblemTest.Run();
 

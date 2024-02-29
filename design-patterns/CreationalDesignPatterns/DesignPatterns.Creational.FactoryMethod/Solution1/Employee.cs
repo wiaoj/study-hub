@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DesignPatterns.FactoryMethod.Solution1;
+namespace DesignPatterns.Creational.FactoryMethod.Solution1;
 public class Employee {
     public Int32 No { get; set; }
     public String Name { get; set; }

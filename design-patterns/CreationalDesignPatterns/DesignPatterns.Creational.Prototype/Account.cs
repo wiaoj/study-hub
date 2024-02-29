@@ -6,9 +6,9 @@ public sealed class Account : ICloneable {
     protected Customer owner;
 
     protected Boolean defaultAccount;
-    private Boolean openToWithdraw;
-    private Boolean openToPayment;
-    private Boolean opentToTransfer;
+    private readonly Boolean openToWithdraw;
+    private readonly Boolean openToPayment;
+    private readonly Boolean opentToTransfer;
 
     //Problem
     /*

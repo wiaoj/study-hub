@@ -25,4 +25,4 @@ public sealed class ComputerBuilder : IComputerBuilder {
     RAM IComputerBuilder.BuildRam() {
         throw new NotImplementedException();
     }
-}  
+}

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace DesignPatterns.BuilderPattern.Method1;
+namespace DesignPatterns.Creational.BuilderPattern.Method1;
 public class EndpointBuilder {
     private readonly StringBuilder stringBuilder = new();
     private readonly StringBuilder stringBuilderParams = new();
@@ -28,9 +28,8 @@ public class EndpointBuilder {
         // ?? => bunlar istenmez
         if(this.BaseUrl.EndsWith(DEFAULT_DELIMITER))
             this.stringBuilder.Insert(0, this.BaseUrl);
-        else {
+        else
             this.stringBuilder.Insert(0, this.BaseUrl + DEFAULT_DELIMITER);
-        }
 
         String url = this.stringBuilder.ToString().TrimEnd('&');
 

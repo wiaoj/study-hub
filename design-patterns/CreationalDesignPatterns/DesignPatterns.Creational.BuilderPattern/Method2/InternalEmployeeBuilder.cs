@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.BuilderPattern.Method2;
+﻿namespace DesignPatterns.Creational.BuilderPattern.Method2;
 public class InternalEmployeeBuilder : EmployeeBuilderM2 {
     public override void SetEmail(String email) {
         // wiaoj@gmail.com

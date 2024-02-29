@@ -7,6 +7,6 @@ public abstract class Decorator : LibraryItem {
     }
 
     public override void Display() {
-        libraryItem.Display();
+        this.libraryItem.Display();
     }
 }

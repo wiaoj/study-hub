@@ -9,6 +9,6 @@ public abstract class FileSystemItem {
     public abstract Decimal GetSizeInKB();
 
     public override String ToString() {
-        return $"{this.Name} - {this.GetSizeInKB():##.00} KB";
+        return $"{this.Name} - {GetSizeInKB():##.00} KB";
     }
 }

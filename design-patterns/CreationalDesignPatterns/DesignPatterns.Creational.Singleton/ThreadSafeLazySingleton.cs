@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Singleton;
+﻿namespace DesignPatterns.Creational.Singleton;
 public sealed class ThreadSafeLazySingleton : IPrintableName {
     private static ThreadSafeLazySingleton? instance;
     private static Int32 instanceCount = 0;
@@ -11,7 +11,7 @@ public sealed class ThreadSafeLazySingleton : IPrintableName {
     public static ThreadSafeLazySingleton Instance {
         get {
             lock(lockObject) {
-                instance ??= new(); 
+                instance ??= new();
                 return instance;
             }
         }

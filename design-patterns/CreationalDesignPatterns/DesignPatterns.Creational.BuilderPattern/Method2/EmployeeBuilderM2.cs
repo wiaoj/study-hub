@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.BuilderPattern.Method2;
+﻿namespace DesignPatterns.Creational.BuilderPattern.Method2;
 public abstract class EmployeeBuilderM2 : IEmployeeBuilderM2 {
     protected EmployeeM2 Employee { get; set; }
 

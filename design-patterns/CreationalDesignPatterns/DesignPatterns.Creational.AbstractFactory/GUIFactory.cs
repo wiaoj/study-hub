@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.AbstractFactory;
+﻿namespace DesignPatterns.Creational.AbstractFactory;
 public sealed class GUIFactory : IGUIFactory {
     public IComponent CreateButton() {
         return new Button();

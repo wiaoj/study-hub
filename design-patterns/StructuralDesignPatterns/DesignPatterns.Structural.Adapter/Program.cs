@@ -1,4 +1,4 @@
 ﻿using DesignPatterns.Structural.Adapter;
 
-var captain = new Captain(new FishingBoatAdapter());
+Captain captain = new(new FishingBoatAdapter());
 captain.Row();

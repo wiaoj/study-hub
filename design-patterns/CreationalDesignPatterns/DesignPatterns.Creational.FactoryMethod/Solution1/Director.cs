@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Solution1;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Solution1;
 public class Director : Manager {
     protected Decimal Bonus { get; }
 

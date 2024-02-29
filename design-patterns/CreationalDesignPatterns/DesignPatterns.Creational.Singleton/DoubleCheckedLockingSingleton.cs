@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Singleton;
+﻿namespace DesignPatterns.Creational.Singleton;
 public sealed class DoubleCheckedLockingSingleton : IPrintableName {
     private static volatile DoubleCheckedLockingSingleton? instance;
     private static Int32 instanceCount = 0;

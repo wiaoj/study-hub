@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Solution1;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Solution1;
 public class ManagerFactory : IFactory {
     public Employee Create() {
         String department = Random.Shared.CreateEmployeeDepartment();

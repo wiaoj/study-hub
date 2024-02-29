@@ -1,3 +1,1 @@
-﻿using DesignPatterns.AbstractFactory;
-
-_ = new Client(new GUIFactory());
+﻿_ = new Client(new GUIFactory());

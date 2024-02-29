@@ -1,5 +1,5 @@
-﻿using DesignPatterns.BuilderPattern.Method1;
-using DesignPatterns.BuilderPattern.Method2;
+﻿using DesignPatterns.Creational.BuilderPattern.Method1;
+using DesignPatterns.Creational.BuilderPattern.Method2;
 using System.Text;
 
 StringBuilder stringBuilder = new();
@@ -52,12 +52,7 @@ Console.WriteLine($"Employee Email: {employee.Email}");
 //}
 
 EmployeeM2 GenerateEmployee(String fullName, String email, Int32 employeeType) {
-    IEmployeeBuilderM2 employeeBuilder;
-    if(employeeType is default(Int32)) {
-        employeeBuilder = new InternalEmployeeBuilder();
-    } else {
-        employeeBuilder = new ExternalEmployeeBuilder();
-    }
+    IEmployeeBuilderM2 employeeBuilder = employeeType is default(Int32) ? new InternalEmployeeBuilder() : new ExternalEmployeeBuilder();
 
     employeeBuilder.SetFullName(fullName);
     employeeBuilder.SetEmail(email);

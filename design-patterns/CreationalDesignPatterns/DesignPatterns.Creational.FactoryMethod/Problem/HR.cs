@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Problem;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Problem;
 public sealed class HR {
     private readonly List<Employee> employees = [];
 

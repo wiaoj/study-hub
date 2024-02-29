@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Solution1;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Solution1;
 public class DirectorFactory : IFactory {
     public Employee Create() {
         Director director = new(Random.Shared.CreateEmployeeId(),

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.Singleton;
+﻿namespace DesignPatterns.Creational.Singleton;
 public sealed class LazySingleton : IPrintableName {
     private static LazySingleton? instance;
     private static Int32 instanceCount = 0;

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.FactoryMethod.Problem;
+﻿namespace DesignPatterns.Creational.FactoryMethod.Problem;
 public sealed class PayrollOffice {
     public void PaySalary(Employee employee) {
         String type = employee.Type;

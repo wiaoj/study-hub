@@ -1,5 +1,5 @@
-﻿namespace DesignPatterns.Singleton;
-public sealed class BillPughSingleton : IPrintableName { 
+﻿namespace DesignPatterns.Creational.Singleton;
+public sealed class BillPughSingleton : IPrintableName {
     private static Int32 instanceCount = 0;
 
     private BillPughSingleton() {
@@ -17,6 +17,5 @@ public sealed class BillPughSingleton : IPrintableName {
     private static class SingletonHelper { //Thread-safe 
         internal static readonly BillPughSingleton INSTANCE = new();
         static SingletonHelper() { }
-
     }
 }
