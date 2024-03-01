@@ -1,4 +1,6 @@
-﻿using gRoom.gRPC.Messages;
+﻿using Google.Protobuf.WellKnownTypes;
+using gRoom.gRPC.Messages;
+using groomserver.Utils;
 using Grpc.Core;
 
 namespace groomserver.Services;
@@ -19,9 +21,19 @@ public class GroomService : Groom.GroomBase {
     public override async Task<NewsStreamStatus> SendNewsFlash(IAsyncStreamReader<NewsFlash> newsStream, ServerCallContext context) {
         while(await newsStream.MoveNext()) {
             var news = newsStream.Current;
+            MessagesQueue.AddNewsToQueue(news);
             this.logger.LogInformation("News flash: {@NewsItem}", news.NewsItem);
         }
 
         return new NewsStreamStatus { Success = true };
+    }
+
+    public override async Task StartMonitoring(Empty _, IServerStreamWriter<ReceivedMessage> streamWriter, ServerCallContext context) {
+        while(true) {
+            if(MessagesQueue.HasNewMessage()) 
+                await streamWriter.WriteAsync(MessagesQueue.GetNextMessage());
+            
+            await Task.Delay(500);
+        }
     }
 }
