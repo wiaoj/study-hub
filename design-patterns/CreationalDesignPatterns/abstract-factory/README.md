@@ -36,11 +36,11 @@ Yukarıdaki krallık örneğini uygulayalım. Öncelikle, krallıktaki nesneler 
 
 ```csharp
 public interface IKing {
-    String Description { get; }
+    String Name { get; }
 }
 
 public interface ICastle {
-    String Name { get; }
+    String Description { get; }
 }
 
 public interface IArmy {
@@ -49,13 +49,13 @@ public interface IArmy {
 
 // Elflerin uygulamaları ->
 public sealed class ElfKing : IKing {
-    public String Description => AbstractFactoryConstants.Elf.KingDescription;
+    public String Name => AbstractFactoryConstants.Elf.KingName;
 
     internal ElfKing() { }
 }
 
 public sealed class ElfCastle : ICastle {
-    public String Name => AbstractFactoryConstants.Elf.CastleName;
+    public String Description => AbstractFactoryConstants.Elf.CastleDescription;
 
     internal ElfCastle() { }
 }
@@ -168,15 +168,26 @@ public static class FactoryMaker {
 }
 
 [Fact]
-public void VerifyHumanKingdomCreation() {
-    Kingdom kingdom = CreateKingdom(KingdomTypes.HUMAN);
+public void VerifyElfKingdomCreation() {
+    Kingdom kingdom = CreateKingdom(KingdomTypes.ELF);
 
-    Assert.IsType<HumanKing>(kingdom.King);
-    Assert.Equal(AbstractFactoryConstants.Human.KingDescription, kingdom.King.Description);
-    Assert.IsType<HumanCastle>(kingdom.Castle);
-    Assert.Equal(AbstractFactoryConstants.Human.CastleName, kingdom.Castle.Name);
-    Assert.IsType<HumanArmy>(kingdom.Army);
-    Assert.Equal(AbstractFactoryConstants.Human.ArmySize, kingdom.Army.Size);
+    Assert.IsType<ElfKing>(kingdom.King);
+    output.WriteLine($"Verified Elf King creation: {kingdom.King.GetType().Name} is as expected.");
+
+    Assert.Equal(AbstractFactoryConstants.Elf.KingName, kingdom.King.Name);
+    output.WriteLine($"Verified Elf King name: {kingdom.King.Name} is as expected.");
+
+    Assert.IsType<ElfCastle>(kingdom.Castle);
+    output.WriteLine($"Verified Elf Castle creation: {kingdom.Castle.GetType().Name} is as expected.");
+
+    Assert.Equal(AbstractFactoryConstants.Elf.CastleDescription, kingdom.Castle.Description);
+    output.WriteLine($"Verified Elf Castle description: {kingdom.Castle.Description} is as expected.");
+
+    Assert.IsType<ElfArmy>(kingdom.Army);
+    output.WriteLine($"Verified Elf Army creation: {kingdom.Army.GetType().Name} is as expected.");
+
+    Assert.Equal(AbstractFactoryConstants.Elf.ArmySize, kingdom.Army.Size);
+    output.WriteLine($"Verified Elf Army size: {kingdom.Army.Size} is as expected.");
 }
 
 private static Kingdom CreateKingdom(KingdomTypes kingdomType) {
