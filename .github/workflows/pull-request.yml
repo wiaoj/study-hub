@@ -10,6 +10,6 @@ jobs:
   create-pull-request:
     runs-on: ubuntu-latest
     steps:
-      - run: gh pr create --fill --fill-verbose
+      - run: gh pr create --fill
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
