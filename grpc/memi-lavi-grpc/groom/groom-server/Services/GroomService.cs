@@ -10,17 +10,15 @@ public class GroomService : Groom.GroomBase {
         this.logger = logger;
     }
 
-    public override Task<RoomRegistrationResponse> RegisterToRoom(RoomRegistrationRequest request, ServerCallContext context) {
-        this.logger.LogInformation("Service called...");
-        Int32 roomNo = Random.Shared.Next(1, 100);
-        this.logger.LogInformation("Room no: {@roomNo}", roomNo);
-        RoomRegistrationResponse response = new() { RoomId = roomNo };
-        return Task.FromResult(response);
+    public override async Task<RoomRegistrationResponse> RegisterToRoom(RoomRegistrationRequest request, ServerCallContext context) {
+        UsersQueues.CreateUserQueue(request.RoomName, request.UserName);
+        RoomRegistrationResponse response = new() { Joined = true };
+        return await Task.FromResult(response);
     }
 
     public override async Task<NewsStreamStatus> SendNewsFlash(IAsyncStreamReader<NewsFlash> newsStream, ServerCallContext context) {
         while(await newsStream.MoveNext()) {
-            var news = newsStream.Current;
+            NewsFlash news = newsStream.Current;
             MessagesQueue.AddNewsToQueue(news);
             this.logger.LogInformation("News flash: {@NewsItem}", news.NewsItem);
         }
@@ -30,10 +28,82 @@ public class GroomService : Groom.GroomBase {
 
     public override async Task StartMonitoring(Empty _, IServerStreamWriter<ReceivedMessage> streamWriter, ServerCallContext context) {
         while(true) {
-            if(MessagesQueue.HasNewMessage()) 
+            if(MessagesQueue.HasNewMessage())
                 await streamWriter.WriteAsync(MessagesQueue.GetNextMessage());
+
+            if(UsersQueues.HasAdminQueueMessage()) 
+                await streamWriter.WriteAsync(UsersQueues.GetNextAdminMessage());
             
             await Task.Delay(500);
         }
+    }
+
+    public override async Task StartChat(IAsyncStreamReader<ChatMessage> incomingStream,
+                                         IServerStreamWriter<ChatMessage> outgoingStream,
+                                         ServerCallContext context) {
+
+        // Wait for the first message to get the user name
+        while(!await incomingStream.MoveNext()) {
+            await Task.Delay(100);
+        }
+
+        String userName = incomingStream.Current.User;
+        String room = incomingStream.Current.Room;
+        this.logger.LogInformation("User {@userName} connected to room {@room}", userName, room);
+
+        // TEST TEST TEST TEST - TO USE ONLY WHEN TESTING WITH BLOOMRPC
+        //UsersQueues.CreateUserQueue(room, userName);
+        // END TEST END TEST END TEST
+
+        // Get messages from the user
+        _ = Task.Run(async () => {
+            while(await incomingStream.MoveNext()) {
+                this.logger.LogInformation("Message received: {@contents}", incomingStream.Current.Contents);
+                UsersQueues.AddMessageToRoom(ConvertToReceivedMessage(incomingStream.Current), incomingStream.Current.Room);
+            }
+        });
+
+
+        // Check for messages to send to the user
+        _ = Task.Run(async () => {
+            while(true) {
+                ReceivedMessage? userMsg = UsersQueues.GetMessageForUser(userName);
+                if(userMsg is not null) {
+                    ChatMessage userMessage = ConvertToChatMessage(userMsg, room);
+                    await outgoingStream.WriteAsync(userMessage);
+                }
+                if(MessagesQueue.HasNewMessage()) {
+                    ReceivedMessage news = MessagesQueue.GetNextMessage();
+                    ChatMessage newsMessage = ConvertToChatMessage(news, room);
+                    await outgoingStream.WriteAsync(newsMessage);
+                }
+
+                await Task.Delay(200);
+            }
+        });
+
+        // Keep the method running
+        while(true) {
+            await Task.Delay(10_000);
+        }
+    }
+
+    private ReceivedMessage ConvertToReceivedMessage(ChatMessage chatMessage) {
+        ReceivedMessage receivedMessage = new() {
+            Contents = chatMessage.Contents,
+            MessageTime = chatMessage.MessageTime,
+            User = chatMessage.User
+        };
+        return receivedMessage;
+    }
+
+    private ChatMessage ConvertToChatMessage(ReceivedMessage receivedMessage, String room) {
+        ChatMessage chatMessage = new() {
+            Contents = receivedMessage.Contents,
+            User = receivedMessage.User,
+            Room = room,
+            MessageTime = receivedMessage.MessageTime
+        };
+        return chatMessage;
     }
 }
