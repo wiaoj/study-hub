@@ -35,6 +35,7 @@ var itemsCount = 0;
 // Calling the service in 1sec intervals
 var intervalId = setInterval(function () {
   var itemIndex = Math.floor(Math.random() * 5);
+  console.log(`Sending: ID - <${itemIndex}>`);
   call.write({ news_item: newsItems[itemIndex] });
   itemsCount++;
   // After 10 calls - end the stream
