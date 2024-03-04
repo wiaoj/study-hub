@@ -15,10 +15,10 @@ String? room = Console.ReadLine();
 Console.WriteLine($"Joining room {room}...");
 
 try {
-    RoomRegistrationResponse joinResponse = client.RegisterToRoom(new RoomRegistrationRequest { 
-        RoomName = room, 
-        UserName = username 
-    }, 
+    RoomRegistrationResponse joinResponse = client.RegisterToRoom(new RoomRegistrationRequest {
+        RoomName = room,
+        UserName = username
+    },
         deadline: DateTime.UtcNow.AddSeconds(5));
     if(joinResponse.Joined) {
         Console.WriteLine("Joined successfully!");
@@ -64,11 +64,19 @@ String promptText = "Type your message: ";
 Int32 row = 2;
 _ = Task.Run(async () => {
     while(true) {
-        if(await call.ResponseStream.MoveNext(cancellationTokenSource.Token)) {
-            ChatMessage message = call.ResponseStream.Current;
-            PrintMessage(message);
+        try {
+            if(await call.ResponseStream.MoveNext(cancellationTokenSource.Token)) {
+                ChatMessage message = call.ResponseStream.Current;
+                PrintMessage(message);
+            }
+            await Task.Delay(500);
         }
-        await Task.Delay(500);
+        catch(Grpc.Core.RpcException ex) {
+            if(ex.StatusCode == Grpc.Core.StatusCode.Cancelled) {
+                Console.WriteLine("Cancelled");
+                break;
+            }
+        }
     }
 });
 
@@ -76,6 +84,12 @@ Console.Write(promptText);
 while(true) {
     String? input = Console.ReadLine();
     RestoreInputCursor();
+
+    if(input is "X") {
+        cancellationTokenSource.Cancel();
+        Console.WriteLine("Chat cancelled");
+        break;
+    }
 
     ChatMessage requestMessage = new() {
         Contents = input,

@@ -67,6 +67,9 @@ public class GroomService : Groom.GroomBase {
         // Check for messages to send to the user
         _ = Task.Run(async () => {
             while(true) {
+                if(context.CancellationToken.IsCancellationRequested)
+                    return;
+
                 ReceivedMessage? userMsg = UsersQueues.GetMessageForUser(userName);
                 if(userMsg is not null) {
                     ChatMessage userMessage = ConvertToChatMessage(userMsg, room);
