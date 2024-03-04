@@ -1,5 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 using gRoom.gRPC.Messages;
+using Grpc.Core;
 using Grpc.Net.Client;
 
 using GrpcChannel channel = GrpcChannel.ForAddress("http://localhost:5099");
@@ -15,11 +16,14 @@ String? room = Console.ReadLine();
 Console.WriteLine($"Joining room {room}...");
 
 try {
+    Metadata headers = [];
+    headers.Add("Authorization", "Bearer ....");
     RoomRegistrationResponse joinResponse = client.RegisterToRoom(new RoomRegistrationRequest {
         RoomName = room,
         UserName = username
     },
-        deadline: DateTime.UtcNow.AddSeconds(5));
+        deadline: DateTime.UtcNow.AddSeconds(5),
+        headers: headers);
     if(joinResponse.Joined) {
         Console.WriteLine("Joined successfully!");
     }
