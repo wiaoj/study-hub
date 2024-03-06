@@ -122,3 +122,71 @@ git log
 
 - [Section Slide](./slides/Git+&+Github_+Basics.pdf) 
 - [Section Slide Online](https://www.canva.com/design/DAEPH_Lq4Wk/wGpxJyUvCHfQT3jeXcs-Ww/view?utm_content=DAEPH_Lq4Wk&utm_campaign=designshare&utm_medium=link&utm_source=viewer)
+
+## Atomic Commits
+> When possible, a commit should encompass a
+sinele feature, change, or fix. In other words, try
+to keep each commit focused on a single thing.
+This makes it much easier to Undo or rollback
+changes later on. It also makes your code or
+project easier to review.
+
+## Writing Commit Message
+
+Present or past tense? Does it really matter?
+
+> Describe your changes in imperative mood, e.g.
+"make xyzzy do frotz" instead of "[This patch]
+makes xyzzy do frotz" or "I changed xyzzy to do
+frotz", as if you are giving orders to the
+codebase to change its behavior.
+
+> You do NOT have to follow this pattern
+
+Though the Git docs suggest Using present-tense
+imperative messages, many developers prefer to
+Use past-tense messages. All that matters is
+consistency, especially when working on a team
+with many people making commits
+
+## Amending Commits
+
+Suppose you just made a commit and then realized
+you forgot to include a file! Or, maybe you made a
+typo in the commit message that you want to
+correct.
+Rather than making a brand new separate commit,
+YOU can "redo" the previous commit using
+the `--amend` option
+
+```properties
+git commit -m "some commit"
+git add forgotten_file
+git commit --amend
+```
+
+[Git Commit Document](https://git-scm.com/docs/git-commit)
+
+## Ignoring Files
+
+We can tell Git which files and directories to
+ignore in a given repository, Using a `.gitignore` file.
+This is useful for files you know you **NEVER** want to
+commit, including:
+
+- Secretsı API keys, credentialsı etc.
+- Operating System files (.DS_Store on Mac)
+- Log files
+- Dependencies 8 packages
+
+
+### .gitignore
+Create a file called `.gitignore` in the root of a
+repository. Inside the file, we can write patterns to
+tell Git which files 8 folders to ignore:
+- .DS_Store Will ignore files named .DS_Store
+- folderName/ Will ignore an entire directory
+- *.log Will ignore any files with the .log extension
+
+- [Section Slide](./slides/Git+&+Github_+Committing+In+Detail.pdf) 
+- [Section Slide Online](https://www.canva.com/design/DAEXMibkysc/uO4KEygGGLG13bkHSnzbgQ/view)
