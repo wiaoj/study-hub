@@ -1,0 +1,30 @@
+[
+    {     
+        "id": 1,
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "published": "21.09.1937",
+        "pages": 310
+    },
+    {
+        "id": 2,
+        "title": "The Fellowship of the Ring",
+        "author": "J.R.R. Tolkien",
+        "published": "29.07.1954",
+        "pages": 423
+    },
+    {
+        "id": 3,
+        "title": "The Two Towers",
+        "author": "J.R.R. Tolkien",
+        "published": "11.11.1954",
+        "pages": 352
+    },
+    {
+        "id": 4,
+        "title": "The Return of the King",
+        "author": "J.R.R. Tolkien",
+        "published": "20.10.1955",
+        "pages": 416
+    }
+]
