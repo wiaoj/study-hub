@@ -123,4 +123,4 @@ Genellikle, proxy deseni şunlar için kullanılır:
 
 ## İlgili tasarımlar
 
-* [Ambassador](https://csharp-design-patterns.com/patterns/ambassador/)
+* [Ambassador](../ambassador/)
