@@ -1,6 +1,6 @@
 ﻿namespace State;
 public static class Logger {
-    public static List<String> Logs = new();
+    public static readonly List<String> Logs = [];
 
     public static String LastLog => Logs[^1];
 
