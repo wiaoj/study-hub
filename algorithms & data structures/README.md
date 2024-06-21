@@ -57,7 +57,7 @@ Bu durumlarda yardımcı olabilecek bazı kural noktaları vardır. Bu kurallar 
 ![bigoconstantsexample](./images/big-o-constants-example.png)
 ![bigochart](./images/big-o-chart.png)
 
-# Uzay Karmaşıklığı
+## Uzay Karmaşıklığı
 
 Şimdiye kadar, **zaman karmaşıklığına** odaklanıyorduk: Girişlerin boyutu arttıkça bir algoritmanın çalışma süresini nasıl analiz edebiliriz?
 
@@ -78,7 +78,7 @@ Aksi belirtilmedikçe, uzay karmaşıklığı hakkında konuştuğumuzda, teknik
 ![spacecomplexityexample2](./images/space-complexity-example-2.png)
 
 
-# Logarithms
+## Logarithms
 
 ![logarithm](./images/logarithm.png)
 
@@ -86,11 +86,11 @@ Aksi belirtilmedikçe, uzay karmaşıklığı hakkında konuştuğumuzda, teknik
 > Verimli sıralama algoritmaları logaritmaları içerir.<br>
 > Rekürsiyon bazen logaritmik uzay karmaşıklığına sahiptir.
 
-# Algoritma Performans Analizi
+## Algoritma Performans Analizi
 - Bir algoritmanın performansını analiz etmek için Big O Notasyonunu kullanırız.
 - Big O Notasyonu, bize bir algoritmanın zaman veya uzay karmaşıklığı hakkında üst düzey bir anlayış sağlayabilir.
 - Big O Notasyonu hassasiyete değil, yalnızca genel eğilimlere (doğrusal mı, karesel mi, sabit mi?) önem verir.
 - Zaman ve uzay karmaşıklığı (Big O ile ölçüldüğü gibi) yalnızca algoritmaya bağlıdır, algoritmayı çalıştırmak için kullanılan donanıma bağlı değildir.
 
-# Grafik
+## Grafik
 ![bigochart](./images/big-o-chart.png)
