@@ -1,0 +1,80 @@
+version: '3.4'
+
+services:
+  # socialmedia.posts.queries.api:
+  #   image: ${DOCKER_REGISTRY-}socialmediapostsqueriesapi
+  #   build:
+  #     context: .
+  #     dockerfile: SocialMedia/Posts.Queries/SocialMedia.Posts.Queries.Api/Dockerfile
+  #   depends_on:
+  #     - sqlserver
+
+  socialmedia.posts.commands.api:
+    image: ${DOCKER_REGISTRY-}socialmediapostscommandsapi
+    build:
+      context: .
+      dockerfile: SocialMedia/Posts.Commands/SocialMedia.Posts.Commands.Api/Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - mongodb
+
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    restart: always
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    restart: always
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    depends_on:
+      - zookeeper
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  # sqlserver:
+  #   image: mcr.microsoft.com/mssql/server
+  #   container_name: sqlserver
+  #   ports:
+  #     - "1433:1433"
+  #   environment:
+  #     SA_PASSWORD: "MssqlPassword1."
+  #     ACCEPT_EULA: "Y"
+  #   volumes:
+  #     - sqlserver_data:/var/opt/mssql
+      
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
+  mongodb_data:
+  sqlserver_data:
+   
+networks:
+  default:    
+    name: socialmediaposts
+    external: true

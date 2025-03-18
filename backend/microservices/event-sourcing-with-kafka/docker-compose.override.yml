@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  # socialmedia.posts.queries.api:
+  #   environment:
+  #     - ASPNETCORE_ENVIRONMENT=Development
+  #     - ASPNETCORE_HTTP_PORTS=8080
+  #   ports:
+  #     - "8080"
+
+  socialmedia.posts.commands.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - MongoDbConfig__ConnectionString=mongodb://mongodb:27017
+      - MongoDbConfig__Database=socialMedia
+      - MongoDbConfig__Collection=eventStore
+      - ProducerConfig__BootstrapServers=kafka:9092
+    ports:
+      - "8080"
+
