@@ -3,11 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SingletonDesignPattern", "SingletonDesignPattern", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
-	ProjectSection(SolutionItems) = preProject
-		readme.md = readme.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E913752A-1DE4-4A73-ABEA-BB2446FB9D78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "SingletonDesignPattern\Example\Example.csproj", "{569799E8-4EDF-4B7E-B754-5BF0B2118C31}"
 EndProject
@@ -16,6 +11,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Asynchronous", "SingletonDesignPattern\Example.Asynchronous\Example.Asynchronous.csproj", "{9D00A452-6FD8-43A9-5F64-1FB089844B06}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Example.Typescript", "SingletonDesignPattern\Example.Typescript\Example.Typescript.esproj", "{D09C6747-AB38-44B2-DDA5-D86E4BE53102}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MultitonDesignPattern", "MultitonDesignPattern", "{0506EAE5-59A6-4333-9F79-D89102EDCD4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "MultitonDesignPattern\Example\Example.csproj", "{71284789-EBA8-43D9-A76D-8CFCD5EE95C2}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Example.Typescript", "MultitonDesignPattern\Example.Typescript\Example.Typescript.esproj", "{64468719-88F3-D6F5-7184-DDACE60B404D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,16 +42,27 @@ Global
 		{D09C6747-AB38-44B2-DDA5-D86E4BE53102}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D09C6747-AB38-44B2-DDA5-D86E4BE53102}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D09C6747-AB38-44B2-DDA5-D86E4BE53102}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{71284789-EBA8-43D9-A76D-8CFCD5EE95C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71284789-EBA8-43D9-A76D-8CFCD5EE95C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71284789-EBA8-43D9-A76D-8CFCD5EE95C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71284789-EBA8-43D9-A76D-8CFCD5EE95C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64468719-88F3-D6F5-7184-DDACE60B404D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64468719-88F3-D6F5-7184-DDACE60B404D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64468719-88F3-D6F5-7184-DDACE60B404D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{64468719-88F3-D6F5-7184-DDACE60B404D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64468719-88F3-D6F5-7184-DDACE60B404D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64468719-88F3-D6F5-7184-DDACE60B404D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{E913752A-1DE4-4A73-ABEA-BB2446FB9D78} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{569799E8-4EDF-4B7E-B754-5BF0B2118C31} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F1FBBA47-0DC0-47D4-934A-F162CA1BBD24} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{9D00A452-6FD8-43A9-5F64-1FB089844B06} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{D09C6747-AB38-44B2-DDA5-D86E4BE53102} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{71284789-EBA8-43D9-A76D-8CFCD5EE95C2} = {0506EAE5-59A6-4333-9F79-D89102EDCD4A}
+		{64468719-88F3-D6F5-7184-DDACE60B404D} = {0506EAE5-59A6-4333-9F79-D89102EDCD4A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D726ABE2-D29B-46F3-8DC9-121A2B8AAD57}
