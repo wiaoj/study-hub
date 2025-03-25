@@ -10,8 +10,8 @@ C#'da multithread yaklaşımını sergileyebilmemiz için **System.Threading** n
 
 Bizler bu sınıf ile main thread'in dışında, yeni thread'ler oluşturabilir ve kontrol edebiliriz.
 
-![Image](docs/1.png)
-![Image](docs/2.png)
+![Image](./docs/1.png)
+![Image](./docs/2.png)
 
 - İki görselde aynıdır, ilk görseldeki gibi oluşturduğumuzda da arka planda yeni bir **ThreadStart** delegate oluşturmaktadır
 
@@ -33,7 +33,7 @@ thread'ler arası hedefsel haberleşmeyi sağlayabilmekte ve kaynak yönetimi gi
 
 Thread'lerin id değerine erişebilmek için
 
-![Image](docs/3.png)
+![Image](./docs/3.png)
 
 - AppDomain.GetCurrentThreadId() -> deprecated edilmiştir (kararlı id değeri sağlayamıyor)
 
@@ -64,7 +64,7 @@ Oluşturulan thread'ler, mevcut durumlarını ifade etmek için State bilgisi ba
 
 Bu bilgi **ThreadState** türündedir ve bir thread'in şu anda hangi durumda olduğunu belirten bir state verisidir.
 
-![Image](docs/4.png)
+![Image](./docs/4.png)
 
 ## Race Conditions Nedir? ve Nasıl Önlemler Alınır?
 
